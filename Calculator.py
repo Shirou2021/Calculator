@@ -25,7 +25,7 @@ while validate:
 		if num2 == '0':
 			print ("Error! Denominator cannot be 0")
 			break;
-		if num2 != 0:
+		elif num2 != 0:
 			num1 / num2
 			print ("Result:", num1 / num2)
 	validate = False
