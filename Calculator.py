@@ -25,8 +25,8 @@ def division (num1, num2):
 def modulo (num1, num2):
 	return num1 % num2
 
-first = int(input("Enter first value: "))
-second = int(input("Enter second value: "))
+first = float(input("Enter first value: "))
+second = float(input("Enter second value: "))
 userInput = input("Enter an operation + - * / %: ")
 
 # Lines 41 to 45 checks for only integet input.
