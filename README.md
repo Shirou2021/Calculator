@@ -1,9 +1,11 @@
 # Calculator
-Ti calculator, stands for Texas instrument calculator. 
-It was a powerful graphing calculator to use in the 
-field of math and science from middle school, all the
-way to college.
+This program was intended to make a simplified calculator we would see
+and perhap use in the daily life. However, as time progresses, more feature
+will going to be added, so it might looks like a scientific calculator at the
+end.
 
-This program will intended to simulate a physical 
-Ti calculator into a much simplified form. As time goes on, 
-more features might be added for addition needs. 
+For now:
+Basic is done.
+
+UP next: 
+Convert into GUI based calculator.
