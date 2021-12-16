@@ -1,3 +1,6 @@
+# Use tkinter create a quick and simple calculator.
+# Only intended to make it as a fun project. 
+
 import tkinter as tk
 
 calculation = ""
