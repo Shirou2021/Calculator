@@ -1,62 +1,83 @@
-# Create a simple calculator 
-import sys
-import re
+import tkinter as tk
 
-# checks for version of python 3
-print ("Hello Python", sys.version)
+calculation = ""
 
-# 5 different function for 5 most common mathematical operations!
-def addition (num1, num2):
-	sum = num1 + num2
-	return sum
+def intries(symbol):
+  global calculation
+  calculation = calculation + str(symbol) # handles integer and char intry
+  text_result.delete(1.0, "end") # clear the screen after each use
+  text_result.insert(1.0, calculation)
 
-def subtraction (num1, num2):
-	sum = num1 - num2
-	return sum
+# A function that does some basic operation, like add, subtract, multiply, and etc
+def math():
+  global calculation
+  try:
+    calculation = str(eval(calculation))
+    text_result.delete(1.0, "end") # clear the screen after each use
+    text_result.insert(1.0, calculation)
+  except:
+    reset()
+    text_result.insert(1.0, "Error. Unable to divide by 0!")
 
-def multiplication (num1, num2):
-	sum = num1 * num2
-	return sum
+def reset():
+  global calculation
+  calculation = ""
+  text_result.delete(1.0,"end")
 
-def division (num1, num2):
-	sum = num1 / num2
-	return sum
 
-def modulo (num1, num2):
-	return num1 % num2
 
-first = float(input("Enter first value: "))
-second = float(input("Enter second value: "))
-userInput = input("Enter an operation + - * / %: ")
 
-# Lines 41 to 45 checks for only integet input.
-firstCheck = re.compile(r'^\-?[1-9][0-9]*$')
-checkPassed1 = re.match(firstCheck, userInput)
+root = tk.Tk()
+root.title("Hello")
+root.geometry("300x300")
+text_result = tk.Text(root, height = 2, width = 16, font=("Times New Roman", 23))
+text_result.grid(columnspan = 5)
 
-secondCheck = re.compile(r'^\-?[1-9][0-9]*$')
-checkPassed2 = re.match(secondCheck, userInput)
+# lambda will reference to the function instead directly using it.
+button_0 = tk.Button(root, text = "0", command=lambda: intries(0), width=5, font=("Times New Roman", 13))
+button_0.grid(row = 5, column = 2)
 
-validate = True
-while validate:
-	# A tradition way to check for user input. Could be done in function 
-	if (userInput == "+" or "-" or "*" or "/" or "%" and checkPassed1 and checkPassed2):
-		if userInput == '+':
-			print ("Result: ", addition(first, second))
-		elif userInput == '-':
-			print ("Result: ", subtraction(first, second))
-		elif userInput == '*':
-			print ("Result: ", multiplication(first, second))
-		elif userInput == '/':
-			if (second != 0):
-				print ("Result: ", multiplication(first, second))
-			else:
-				print ("Error! Unable to divide by 0")  
-				exit(0)
-		elif userInput == '%':
-			print ("Reminder: ", modulo(first, second))
+button_1 = tk.Button(root, text = "1", command=lambda: intries(1), width=5, font=("Times New Roman", 13))
+button_1.grid(row = 4, column = 1)
 
-	else:
-		print ("Invalid selection entry!")
-		exit(0) # If no valid entry was entered, end the program and start over!
-	validate = False
+button_2 = tk.Button(root, text = "2", command=lambda: intries(2), width=5, font=("Times New Roman", 13))
+button_2.grid(row = 4, column = 2)
 
+button_3 = tk.Button(root, text = "3", command=lambda: intries(3), width=5, font=("Times New Roman", 13))
+button_3.grid(row = 4, column = 3)
+
+button_4 = tk.Button(root, text = "4", command=lambda: intries(4), width=5, font=("Times New Roman", 13))
+button_4.grid(row = 3, column = 1)
+
+button_5 = tk.Button(root, text = "5", command=lambda: intries(5), width=5, font=("Times New Roman", 13))
+button_5.grid(row = 3, column = 2)
+
+button_6 = tk.Button(root, text = "6", command=lambda: intries(6), width=5, font=("Times New Roman", 13))
+button_6.grid(row = 3, column = 3)
+
+button_7 = tk.Button(root, text = "7", command=lambda: intries(7), width=5, font=("Times New Roman", 13))
+button_7.grid(row = 2, column = 1)
+
+button_8 = tk.Button(root, text = "8", command=lambda: intries(8), width=5, font=("Times New Roman", 13))
+button_8.grid(row = 2, column = 2)
+
+button_9 = tk.Button(root, text = "9", command=lambda: intries(9), width=5, font=("Times New Roman", 13))
+button_9.grid(row = 2, column = 3)
+
+button_plus = tk.Button(root, text = "+", command=lambda: intries("+"), width=5, font=("Times New Roman", 13))
+button_plus.grid(row = 5, column = 4)
+
+button_minus = tk.Button(root, text = "-", command=lambda: intries("-"), width=5, font=("Times New Roman", 13))
+button_minus.grid(row = 4, column = 4)
+
+button_multiplication = tk.Button(root, text = "*", command=lambda: intries("*"), width=5, font=("Times New Roman", 13))
+button_multiplication.grid(row = 3, column = 4)
+
+button_division = tk.Button(root, text = "/", command=lambda: intries("/"), width=5, font=("Times New Roman", 13))
+button_division.grid(row = 2, column = 4)
+
+#button_modulo = tk.Button(root, text = "%", command=lambda: intries("%"), width=5, font=("Times New Roman", 13))
+#button_modulo.grid(row = 1, column = 4)
+
+# Can be think as infinite loop in other language, but not quite. The function will call the tkinter event loop until user choose to terminate.
+root.mainloop() 
