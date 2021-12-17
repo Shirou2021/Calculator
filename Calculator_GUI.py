@@ -96,5 +96,6 @@ button_equal.grid(row = 5, column = 4)
 
 button_clear = tk.Button(root, text = "C", command = reset, width=6, height = 3, font=("Times New Roman", 13))
 button_clear.grid(row = 5, column = 1)
+
 # Can be think as infinite loop in other language, but not quite. The function will call the tkinter event loop until user choose to terminate.
 root.mainloop() 
